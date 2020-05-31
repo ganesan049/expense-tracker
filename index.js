@@ -33,8 +33,15 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-const port = process.env.port || 1337;
+// # port (as described above) and host are both wrong
+const host = "localhost";
+const port = 3000;
 
-app.listen(port, () => {
-  console.log(`Listening at port ${port}`);
+// # use alternate localhost and the port Heroku assigns to $PORT
+const host = "0.0.0.0";
+const port = process.env.PORT || 3000;
+// Then you can start the server, as usual:
+
+app.listen(port, host, function () {
+  console.log = `Server started.......${port}`;
 });
